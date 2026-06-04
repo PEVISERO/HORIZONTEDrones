@@ -388,6 +388,35 @@
       color: rgba(255, 255, 255, .76);
       font-size: .9rem;
     }
+    .survey-analysis-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .survey-analysis-card {
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, .18);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, .1);
+      backdrop-filter: blur(8px);
+    }
+    .survey-analysis-card img {
+      width: 100%;
+      aspect-ratio: 1.12 / 1;
+      object-fit: contain;
+      background: #fff;
+    }
+    .survey-analysis-card figcaption { padding: 1.2rem; }
+    .survey-analysis-card strong {
+      display: block;
+      color: #8ee69b;
+      margin-bottom: .3rem;
+    }
+    .survey-analysis-card span {
+      color: rgba(255, 255, 255, .76);
+      font-size: .86rem;
+    }
 
     .gallery { background: var(--soft); }
     .gallery-top {
@@ -658,7 +687,7 @@
     @media (max-width: 620px) {
       .hero { min-height: 92vh; }
       .hero-inner { width: min(90vw, 520px); padding-top: 7.5rem; }
-      .grid-3, .steps, .coverage-grid, .fields, .mosaic, .deliverables { grid-template-columns: 1fr; }
+      .grid-3, .steps, .coverage-grid, .fields, .mosaic, .deliverables, .survey-analysis-grid { grid-template-columns: 1fr; }
       .land-survey .btn { width: 100%; }
       .land-survey .btn-light { margin: .7rem 0 0; }
       .survey-example img { height: 270px; }
@@ -814,6 +843,22 @@
           <span>Una vista continua y detallada del predio permite medir areas, reconocer caminos, cuerpos de agua, coberturas y otros elementos visibles antes de realizar analisis especializados.</span>
         </figcaption>
       </figure>
+      <div class="inner survey-analysis-grid">
+        <figure class="survey-analysis-card reveal">
+          <img src="fotos/analisis-malla-drenaje-pradera.webp" alt="Malla de drenaje y rutas estimadas de escorrentia sobre un terreno" loading="lazy" />
+          <figcaption>
+            <strong>Malla de drenaje y escorrentias</strong>
+            <span>Identificacion visual de posibles rutas de flujo superficial y zonas de concentracion del agua.</span>
+          </figcaption>
+        </figure>
+        <figure class="survey-analysis-card reveal">
+          <img src="fotos/analisis-curvas-nivel-pradera.webp" alt="Curvas de nivel generadas sobre un levantamiento de terreno" loading="lazy" />
+          <figcaption>
+            <strong>Curvas de nivel</strong>
+            <span>Representacion del relieve y sus variaciones para apoyar la lectura y planeacion del terreno.</span>
+          </figcaption>
+        </figure>
+      </div>
     </section>
 
     <section class="gallery" id="proyectos">
