@@ -349,6 +349,45 @@
       font-size: .84rem;
       line-height: 1.5;
     }
+    .survey-example {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(260px, .6fr);
+      margin-top: 2rem;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, .18);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, .1);
+      backdrop-filter: blur(8px);
+    }
+    .survey-example img {
+      width: 100%;
+      height: 360px;
+      object-fit: contain;
+      background: #fff;
+    }
+    .survey-example figcaption {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(1.4rem, 4vw, 2.4rem);
+    }
+    .survey-example small {
+      color: #8ee69b;
+      font-size: .7rem;
+      font-weight: 950;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-bottom: .55rem;
+    }
+    .survey-example strong {
+      font-size: 1.3rem;
+      line-height: 1.2;
+      margin-bottom: .65rem;
+    }
+    .survey-example span {
+      color: rgba(255, 255, 255, .76);
+      font-size: .9rem;
+    }
 
     .gallery { background: var(--soft); }
     .gallery-top {
@@ -608,7 +647,7 @@
     @media (max-width: 980px) {
       nav ul { display: none; }
       .hamburger { display: flex; }
-      .hero-inner, .split, .contact-layout, .land-survey-copy { grid-template-columns: 1fr; }
+      .hero-inner, .split, .contact-layout, .land-survey-copy, .survey-example { grid-template-columns: 1fr; }
       .hero-card { display: none; }
       .grid-3, .steps, .coverage-grid { grid-template-columns: 1fr 1fr; }
       .mosaic { grid-template-columns: 1fr 1fr; grid-auto-rows: 210px; }
@@ -622,6 +661,7 @@
       .grid-3, .steps, .coverage-grid, .fields, .mosaic, .deliverables { grid-template-columns: 1fr; }
       .land-survey .btn { width: 100%; }
       .land-survey .btn-light { margin: .7rem 0 0; }
+      .survey-example img { height: 270px; }
       .mosaic { grid-auto-rows: 230px; }
       footer { align-items: flex-start; flex-direction: column; }
     }
@@ -766,6 +806,14 @@
           </article>
         </div>
       </div>
+      <figure class="inner survey-example reveal">
+        <img src="fotos/levantamiento-pradera-ortomosaico.png" alt="Ortomosaico de un levantamiento de terreno realizado por InspectDron" loading="lazy" />
+        <figcaption>
+          <small>Muestra de trabajo real</small>
+          <strong>Ortomosaico de terreno levantado con dron</strong>
+          <span>Una vista continua y detallada del predio permite medir areas, reconocer caminos, cuerpos de agua, coberturas y otros elementos visibles antes de realizar analisis especializados.</span>
+        </figcaption>
+      </figure>
     </section>
 
     <section class="gallery" id="proyectos">
