@@ -5,15 +5,15 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>InspectDron S.A.S. | Fotogrametría para proyectos solares</title>
+  <title>InspectDron S.A.S. | Levantamientos de terrenos y fotogrametría</title>
 
   <meta name="description"
-        content="InspectDron S.A.S. realiza fotogrametría con drones y análisis técnico de terrenos y cubiertas para futuras instalaciones de paneles solares en Colombia." />
+        content="InspectDron S.A.S. realiza levantamientos de terrenos con drones, análisis de áreas, linderos, escorrentías, curvas de nivel y fotogrametría para proyectos solares en Colombia." />
 
   <!-- Open Graph / Facebook -->
   <meta property="og:title" content="InspectDron S.A.S." />
   <meta property="og:description"
-        content="Fotogrametría y análisis técnico para proyectos solares en Colombia." />
+        content="Levantamientos de terrenos, fotogrametría y análisis técnico con drones en Colombia." />
   <meta property="og:image"
         content="https://pevisero.github.io/InspectDron/logo-inspectdron-final.jpeg" />
   <meta property="og:image:width" content="1200" />
@@ -28,10 +28,9 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="InspectDron S.A.S." />
   <meta name="twitter:description"
-        content="Fotogrametría y análisis técnico para proyectos solares." />
+        content="Levantamientos de terrenos, fotogrametría y análisis técnico con drones." />
   <meta name="twitter:image"
         content="https://pevisero.github.io/InspectDron/logo-inspectdron-final.jpeg" />
-  <title>InspectDron S.A.S. | Fotogrametria para proyectos solares</title>
   <style>
     :root {
       --bg: #f4f6f3;
@@ -305,6 +304,52 @@
     .card li { display: grid; grid-template-columns: 18px 1fr; gap: .35rem; }
     .card li::before { content: "✓"; color: var(--green); font-weight: 950; }
 
+    .land-survey {
+      color: #fff;
+      background:
+        linear-gradient(110deg, rgba(14, 55, 78, .96), rgba(27, 92, 57, .92)),
+        url("fotos/acueducto_cota_aereo.jpg") center / cover;
+    }
+    .land-survey .eyebrow { color: #8ee69b; }
+    .land-survey h2 { color: #fff; }
+    .land-survey-copy {
+      display: grid;
+      grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+      gap: clamp(2rem, 6vw, 5rem);
+      align-items: center;
+    }
+    .land-survey-intro p {
+      max-width: 560px;
+      color: rgba(255, 255, 255, .8);
+      margin-bottom: 1.5rem;
+    }
+    .land-survey .btn-light { margin-left: .65rem; }
+    .deliverables {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: .8rem;
+    }
+    .deliverable {
+      min-height: 132px;
+      padding: 1.1rem;
+      border: 1px solid rgba(255, 255, 255, .18);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, .1);
+      backdrop-filter: blur(8px);
+    }
+    .deliverable strong {
+      display: block;
+      color: #8ee69b;
+      font-size: 1rem;
+      margin-bottom: .35rem;
+    }
+    .deliverable span {
+      display: block;
+      color: rgba(255, 255, 255, .76);
+      font-size: .84rem;
+      line-height: 1.5;
+    }
+
     .gallery { background: var(--soft); }
     .gallery-top {
       display: flex;
@@ -563,7 +608,7 @@
     @media (max-width: 980px) {
       nav ul { display: none; }
       .hamburger { display: flex; }
-      .hero-inner, .split, .contact-layout { grid-template-columns: 1fr; }
+      .hero-inner, .split, .contact-layout, .land-survey-copy { grid-template-columns: 1fr; }
       .hero-card { display: none; }
       .grid-3, .steps, .coverage-grid { grid-template-columns: 1fr 1fr; }
       .mosaic { grid-template-columns: 1fr 1fr; grid-auto-rows: 210px; }
@@ -574,7 +619,9 @@
     @media (max-width: 620px) {
       .hero { min-height: 92vh; }
       .hero-inner { width: min(90vw, 520px); padding-top: 7.5rem; }
-      .grid-3, .steps, .coverage-grid, .fields, .mosaic { grid-template-columns: 1fr; }
+      .grid-3, .steps, .coverage-grid, .fields, .mosaic, .deliverables { grid-template-columns: 1fr; }
+      .land-survey .btn { width: 100%; }
+      .land-survey .btn-light { margin: .7rem 0 0; }
       .mosaic { grid-auto-rows: 230px; }
       footer { align-items: flex-start; flex-direction: column; }
     }
@@ -587,6 +634,7 @@
     </a>
     <ul>
       <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#levantamiento-terrenos">Terrenos</a></li>
       <li><a href="#proyectos">Proyectos</a></li>
       <li><a href="#tecnologia">Tecnologia</a></li>
       <li><a href="#proceso">Proceso</a></li>
@@ -599,6 +647,7 @@
 
   <div id="mobile-menu">
     <a href="#servicios" onclick="toggleMenu()">Servicios</a>
+    <a href="#levantamiento-terrenos" onclick="toggleMenu()">Terrenos</a>
     <a href="#proyectos" onclick="toggleMenu()">Proyectos</a>
     <a href="#tecnologia" onclick="toggleMenu()">Tecnologia</a>
     <a href="#proceso" onclick="toggleMenu()">Proceso</a>
@@ -610,8 +659,8 @@
       <div class="hero-inner">
         <div>
           <div class="badge"><i></i>Cundinamarca · Boyaca · Tolima · Meta</div>
-          <h1>Fotogrametria y analisis <span>para energia solar</span></h1>
-          <p>Levantamos informacion aerea precisa para evaluar terrenos y cubiertas antes de instalar paneles solares: areas utiles, pendientes, sombras, accesos y condiciones del entorno.</p>
+          <h1>Fotogrametria y analisis <span>para conocer tu terreno</span></h1>
+          <p>Levantamos informacion aerea precisa para analizar areas, linderos, pendientes, escorrentias y curvas de nivel, y para evaluar terrenos y cubiertas antes de instalar paneles solares.</p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="#contacto">Solicitar diagnostico</a>
             <a class="btn btn-light" href="#proyectos">Ver trabajos de campo</a>
@@ -619,14 +668,15 @@
           <div class="hero-pills">
             <span class="pill">Ortomosaicos</span>
             <span class="pill">Modelos 3D</span>
+            <span class="pill">Curvas de nivel</span>
             <span class="pill">Analisis de cubiertas</span>
-            <span class="pill">Terrenos solares</span>
+            <span class="pill">Analisis de terrenos</span>
           </div>
         </div>
         <aside class="hero-card" aria-label="Resumen tecnico">
           <img src="logo-inspectdron-final.jpeg" alt="InspectDron S.A.S." />
           <div class="metric"><strong>2D</strong><span>Ortomosaico georreferenciado para medicion de areas</span></div>
-          <div class="metric"><strong>3D</strong><span>Modelo de terreno o cubierta para analisis tecnico</span></div>
+          <div class="metric"><strong>3D</strong><span>Modelo de elevacion, terreno o cubierta para analisis tecnico</span></div>
           <div class="metric"><strong>72h</strong><span>Entrega digital estimada segun alcance del proyecto</span></div>
         </aside>
       </div>
@@ -683,6 +733,36 @@
                 <li>Soporte para diseno preliminar</li>
               </ul>
             </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="land-survey" id="levantamiento-terrenos">
+      <div class="inner land-survey-copy">
+        <div class="land-survey-intro reveal">
+          <div class="eyebrow">Nuevo servicio especializado</div>
+          <h2>Levantamiento y analisis de terrenos con dron</h2>
+          <p>Transformamos un vuelo sobre tu predio en informacion visual y medible para planear obras, administrar fincas, revisar drenajes y comprender mejor las condiciones del terreno.</p>
+          <a class="btn btn-primary" href="#contacto">Cotizar levantamiento</a>
+          <a class="btn btn-light" href="#proceso">Como trabajamos</a>
+        </div>
+        <div class="deliverables reveal" aria-label="Entregables para levantamientos de terrenos">
+          <article class="deliverable">
+            <strong>Areas y linderos</strong>
+            <span>Medicion de superficies, perimetros, distancias y delimitaciones visibles del predio.</span>
+          </article>
+          <article class="deliverable">
+            <strong>Curvas de nivel</strong>
+            <span>Representacion del relieve para apoyar planeacion, diseno y evaluacion preliminar.</span>
+          </article>
+          <article class="deliverable">
+            <strong>Pendientes y escorrentias</strong>
+            <span>Lectura de inclinaciones y posibles recorridos superficiales del agua.</span>
+          </article>
+          <article class="deliverable">
+            <strong>Ortomosaico y modelo 3D</strong>
+            <span>Mapa aereo georreferenciado y modelo digital para consulta y documentacion tecnica.</span>
           </article>
         </div>
       </div>
@@ -793,9 +873,9 @@
         <div class="reveal">
           <div class="eyebrow">Contacto</div>
           <h2>Hablemos de tu terreno o cubierta</h2>
-          <p class="muted">Envia los datos basicos del sitio y te respondemos con una propuesta de vuelo y entregables recomendados para tu proyecto solar.</p>
+          <p class="muted">Envia los datos basicos del sitio y te respondemos con una propuesta de vuelo y los entregables recomendados para tu necesidad.</p>
           <div class="contact-boxes">
-            <div class="contact-box"><small>WhatsApp</small><a href="https://wa.me/573133815282" target="_blank" rel="noopener">+57 3172791305</a></div>
+            <div class="contact-box"><small>WhatsApp</small><a href="https://wa.me/573172791305" target="_blank" rel="noopener">+57 3172791305</a></div>
             <div class="contact-box"><small>Correo</small><a href="mailto:p_segurar@outlook.com">p_segurar@outlook.com</a></div>
             <div class="contact-box"><small>Sede</small><strong>Chia, Cundinamarca · Colombia</strong></div>
           </div>
@@ -828,6 +908,9 @@
               <select id="servicio">
                 <option value="">Selecciona...</option>
                 <option>Fotogrametria y ortomosaico</option>
+                <option>Levantamiento y analisis de terreno</option>
+                <option>Areas, linderos y curvas de nivel</option>
+                <option>Analisis de pendientes y escorrentias</option>
                 <option>Analisis de cubierta para paneles solares</option>
                 <option>Analisis de terreno para proyecto solar</option>
                 <option>Estudio completo de prefactibilidad solar</option>
@@ -848,7 +931,7 @@
     <img src="logo-inspectdron-final.jpeg" alt="InspectDron S.A.S." />
     <div>
       <strong>InspectDron S.A.S.</strong>
-      <span>Fotogrametria · Analisis de terrenos · Cubiertas para energia solar</span>
+      <span>Levantamientos de terrenos · Fotogrametria · Cubiertas para energia solar</span>
     </div>
     <div>
       <a href="https://wa.me/573172791305" target="_blank" rel="noopener">+57 3172791305</a><br />
@@ -898,7 +981,7 @@
     function sendWhatsApp(event) {
       event.preventDefault();
       const text = encodeURIComponent(
-        "*Solicitud de estudio solar - InspectDron S.A.S.*\n\n" +
+        "*Solicitud de servicio - InspectDron S.A.S.*\n\n" +
         "*Nombre:* " + value("nombre") + "\n" +
         "*Telefono:* " + value("telefono") + "\n" +
         "*Correo:* " + value("email") + "\n" +
