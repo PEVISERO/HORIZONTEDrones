@@ -1,0 +1,126 @@
+@media (min-width: 1440px) {
+  :root {
+    --container: min(1280px, calc(100vw - 72px));
+  }
+
+  .hero-content {
+    padding-bottom: 70px;
+  }
+}
+
+@media (max-width: 1060px) {
+  .site-header {
+    grid-template-columns: auto 1fr auto;
+  }
+
+  .desktop-nav,
+  .header-cta {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: inline-flex;
+    justify-self: end;
+  }
+
+  .split-grid,
+  .contact-grid,
+  .case-card {
+    grid-template-columns: 1fr;
+  }
+
+  .method-steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .deliverable-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .deliverable-wide {
+    grid-column: span 2;
+    grid-template-columns: 1fr;
+  }
+
+  .case-card img {
+    min-height: 260px;
+    max-height: 420px;
+  }
+}
+
+@media (max-width: 760px) {
+  :root {
+    --container: min(100% - 32px, 1160px);
+  }
+
+  html {
+    scroll-padding-top: 72px;
+  }
+
+  .site-header {
+    height: 68px;
+    padding: 0 16px;
+  }
+
+  .brand img {
+    height: 48px;
+  }
+
+  .mobile-nav {
+    inset-block-start: 68px;
+  }
+
+  .hero {
+    min-height: 92vh;
+  }
+
+  .hero-content {
+    padding: 112px 0 32px;
+  }
+
+  h1 {
+    font-size: clamp(2.25rem, 14vw, 3.8rem);
+  }
+
+  .hero-proof,
+  .deliverable-grid,
+  .method-steps,
+  .case-card dl,
+  .footer-inner,
+  .contact-form {
+    grid-template-columns: 1fr;
+  }
+
+  .deliverable-wide {
+    grid-column: auto;
+  }
+
+  .hero-actions {
+    display: grid;
+  }
+
+  .section {
+    padding: 62px 0;
+  }
+
+  .problem-list article,
+  .advantage-grid article,
+  .deliverable-card,
+  .method-steps li {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 460px) {
+  .hero-proof {
+    display: none;
+  }
+
+  .case-card {
+    padding: 12px;
+  }
+
+  .case-card img {
+    min-height: 220px;
+  }
+}

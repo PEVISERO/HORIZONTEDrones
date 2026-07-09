@@ -1,1090 +1,405 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inspección Técnica de Cubiertas para Proyectos Fotovoltaicos | InspectDron</title>
+  <meta name="description" content="InspectDron entrega información técnica para proyectos fotovoltaicos: inspección de cubiertas, ortofoto georreferenciada, medición de áreas, obstáculos, sombras y dossier técnico en Bogotá y Cundinamarca.">
+  <meta name="keywords" content="inspección de cubiertas, inspección con drones, paneles solares, levantamiento técnico, energía solar, fotogrametría para cubiertas, Bogotá, Cundinamarca">
+  <meta name="author" content="InspectDron S.A.S.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://pevisero.github.io/InspectDron/">
+  <link rel="preload" as="image" href="assets/img/fiandina-chia-paneles.webp" imagesrcset="assets/img/fiandina-chia-paneles.webp">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="responsive.css">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta property="og:title" content="InspectDron | Información técnica para proyectos fotovoltaicos">
+  <meta property="og:description" content="Inspección técnica de cubiertas, ortofoto georreferenciada, mediciones y dossier técnico para instaladores solares.">
+  <meta property="og:image" content="https://pevisero.github.io/InspectDron/assets/img/opengraph.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="https://pevisero.github.io/InspectDron/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="InspectDron S.A.S.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="InspectDron | Información técnica para proyectos fotovoltaicos">
+  <meta name="twitter:description" content="Dossier técnico, registro fotográfico y ortofoto para proyectos solares en Bogotá y Cundinamarca.">
+  <meta name="twitter:image" content="https://pevisero.github.io/InspectDron/assets/img/opengraph.jpg">
 
-  <title>InspectDron S.A.S. | Levantamientos de terrenos y fotogrametría</title>
-
-  <meta name="description"
-        content="InspectDron S.A.S. realiza levantamientos de terrenos con drones, análisis de áreas, linderos, escorrentías, curvas de nivel y fotogrametría para proyectos solares en Colombia." />
-
-  <!-- Open Graph / Facebook -->
-  <meta property="og:title" content="InspectDron S.A.S." />
-  <meta property="og:description"
-        content="Levantamientos de terrenos, fotogrametría y análisis técnico con drones en Colombia." />
-  <meta property="og:image"
-        content="https://pevisero.github.io/InspectDron/logo-inspectdron-final.jpeg" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:image:type" content="image/jpeg" />
-  <meta property="og:url"
-        content="https://pevisero.github.io/InspectDron/" />
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="InspectDron S.A.S." />
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="InspectDron S.A.S." />
-  <meta name="twitter:description"
-        content="Levantamientos de terrenos, fotogrametría y análisis técnico con drones." />
-  <meta name="twitter:image"
-        content="https://pevisero.github.io/InspectDron/logo-inspectdron-final.jpeg" />
-  <style>
-    :root {
-      --bg: #f4f6f3;
-      --paper: #ffffff;
-      --soft: #e9eee8;
-      --line: #d6ddd4;
-      --ink: #26322b;
-      --muted: #667269;
-      --green: #2f7d3a;
-      --green2: #4aa15a;
-      --blue: #1266a8;
-      --sun: #f4b63f;
-      --shade: rgba(20, 31, 25, .16);
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: var(--bg);
-      color: var(--ink);
-      line-height: 1.65;
-      overflow-x: hidden;
-    }
-
-    img { max-width: 100%; display: block; }
-    a { color: inherit; }
-
-    nav {
-      position: fixed;
-      inset: 0 0 auto;
-      height: 72px;
-      z-index: 30;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 clamp(18px, 5vw, 72px);
-      background: rgba(244, 246, 243, .94);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--line);
-      box-shadow: 0 8px 28px rgba(25, 42, 30, .08);
-    }
-
-    .brand img { height: 50px; width: auto; }
-    nav ul { list-style: none; display: flex; align-items: center; gap: 1.6rem; }
-    nav a {
-      text-decoration: none;
-      color: var(--muted);
-      font-size: .9rem;
-      font-weight: 700;
-    }
-    nav a:hover { color: var(--green); }
-    .nav-cta {
-      color: #fff;
-      background: var(--green);
-      border-radius: 999px;
-      padding: .58rem 1.15rem;
-      box-shadow: 0 10px 24px rgba(47, 125, 58, .22);
-    }
-    .nav-cta:hover { color: #fff; background: #266c31; }
-
-    .hamburger {
-      display: none;
-      width: 42px;
-      height: 42px;
-      border: 1px solid var(--line);
-      border-radius: 10px;
-      background: var(--paper);
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-    }
-    .hamburger span { width: 20px; height: 2px; background: var(--ink); border-radius: 2px; }
-    #mobile-menu {
-      display: none;
-      position: fixed;
-      inset: 72px 0 auto;
-      z-index: 25;
-      background: var(--paper);
-      border-bottom: 1px solid var(--line);
-      padding: 1rem 5vw 1.4rem;
-      box-shadow: 0 20px 40px rgba(20, 31, 25, .12);
-    }
-    #mobile-menu.open { display: grid; gap: .8rem; }
-    #mobile-menu a {
-      text-decoration: none;
-      font-weight: 800;
-      color: var(--ink);
-      padding: .8rem 0;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .hero {
-      min-height: 96vh;
-      position: relative;
-      display: flex;
-      align-items: center;
-      isolation: isolate;
-      overflow: hidden;
-    }
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(110deg, rgba(18, 38, 24, .86) 0%, rgba(18, 62, 95, .60) 56%, rgba(18, 38, 24, .36) 100%),
-        url("fotos/fiandina_chia_paneles.jpg") center 44% / cover;
-      z-index: -2;
-    }
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: auto 0 0;
-      height: 170px;
-      background: linear-gradient(transparent, var(--bg));
-      z-index: -1;
-    }
-    .hero-inner {
-      width: min(1180px, 90vw);
-      margin: 0 auto;
-      padding: 9rem 0 5rem;
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) 280px;
-      align-items: center;
-      gap: clamp(2rem, 6vw, 5rem);
-    }
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: .55rem;
-      color: #fff;
-      background: rgba(255, 255, 255, .13);
-      border: 1px solid rgba(255, 255, 255, .3);
-      border-radius: 999px;
-      padding: .42rem .9rem;
-      font-size: .72rem;
-      font-weight: 900;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      margin-bottom: 1.4rem;
-    }
-    .badge i {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--sun);
-      box-shadow: 0 0 0 5px rgba(244, 182, 63, .18);
-    }
-    h1 {
-      color: #fff;
-      font-size: clamp(2.55rem, 6vw, 5rem);
-      line-height: .98;
-      letter-spacing: -.04em;
-      max-width: 780px;
-      margin-bottom: 1.25rem;
-    }
-    h1 span { color: #7dea91; }
-    .hero p {
-      color: rgba(255, 255, 255, .86);
-      font-size: clamp(1rem, 2vw, 1.18rem);
-      max-width: 650px;
-      margin-bottom: 2rem;
-    }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: .9rem; margin-bottom: 2rem; }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 46px;
-      border-radius: 999px;
-      text-decoration: none;
-      font-weight: 850;
-      padding: .78rem 1.35rem;
-      transition: transform .15s ease, background .2s ease, border-color .2s ease;
-    }
-    .btn:hover { transform: translateY(-2px); }
-    .btn-primary { background: var(--green); color: #fff; box-shadow: 0 14px 34px rgba(0, 0, 0, .24); }
-    .btn-primary:hover { background: #256b30; }
-    .btn-light { color: #fff; border: 1px solid rgba(255, 255, 255, .48); background: rgba(255, 255, 255, .08); }
-    .btn-light:hover { border-color: #fff; background: rgba(255, 255, 255, .14); }
-    .hero-pills { display: flex; flex-wrap: wrap; gap: .65rem; }
-    .pill {
-      color: rgba(255, 255, 255, .92);
-      border: 1px solid rgba(255, 255, 255, .26);
-      background: rgba(255, 255, 255, .1);
-      border-radius: 999px;
-      padding: .34rem .82rem;
-      font-size: .8rem;
-      font-weight: 750;
-    }
-    .hero-card {
-      background: rgba(8, 17, 12, .52);
-      border: 1px solid rgba(255, 255, 255, .18);
-      backdrop-filter: blur(16px);
-      border-radius: 8px;
-      padding: 1.45rem;
-      color: #fff;
-      box-shadow: 0 24px 70px rgba(0, 0, 0, .28);
-    }
-    .hero-card img { width: 190px; margin: 0 auto 1.4rem; }
-    .metric {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: .2rem .7rem;
-      align-items: center;
-      padding: .8rem 0;
-      border-top: 1px solid rgba(255, 255, 255, .16);
-    }
-    .metric strong { font-size: 1.45rem; color: #7dea91; line-height: 1; }
-    .metric span { color: rgba(255, 255, 255, .78); font-size: .82rem; }
-
-    section { padding: clamp(4rem, 8vw, 6.5rem) clamp(18px, 5vw, 72px); }
-    .inner { max-width: 1180px; margin: 0 auto; }
-    .section-head { max-width: 680px; margin-bottom: 2.5rem; }
-    .section-head.center { text-align: center; margin-inline: auto; }
-    .eyebrow {
-      color: var(--green);
-      font-size: .76rem;
-      font-weight: 950;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      margin-bottom: .55rem;
-    }
-    h2 {
-      color: var(--blue);
-      font-size: clamp(1.8rem, 3.8vw, 2.9rem);
-      line-height: 1.05;
-      letter-spacing: -.035em;
-      margin-bottom: .85rem;
-    }
-    .section-head p, .muted { color: var(--muted); }
-
-    .services { background: var(--paper); }
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1.25rem;
-    }
-    .card {
-      background: var(--bg);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 10px 32px rgba(20, 31, 25, .06);
-      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
-    }
-    .card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(47, 125, 58, .4);
-      box-shadow: 0 20px 42px rgba(20, 31, 25, .1);
-    }
-    .card img { width: 100%; height: 215px; object-fit: cover; }
-    .card-body { padding: 1.45rem; }
-    .tag {
-      display: inline-flex;
-      color: var(--green);
-      background: #e6f4e7;
-      border-radius: 999px;
-      padding: .24rem .68rem;
-      font-size: .68rem;
-      font-weight: 950;
-      letter-spacing: .06em;
-      text-transform: uppercase;
-      margin-bottom: .8rem;
-    }
-    h3 { font-size: 1.13rem; line-height: 1.2; margin-bottom: .65rem; }
-    .card p { color: var(--muted); font-size: .94rem; margin-bottom: 1rem; }
-    .card ul { list-style: none; display: grid; gap: .46rem; color: var(--muted); font-size: .88rem; }
-    .card li { display: grid; grid-template-columns: 18px 1fr; gap: .35rem; }
-    .card li::before { content: "✓"; color: var(--green); font-weight: 950; }
-
-    .land-survey {
-      color: #fff;
-      background:
-        linear-gradient(110deg, rgba(14, 55, 78, .96), rgba(27, 92, 57, .92)),
-        url("fotos/acueducto_cota_aereo.jpg") center / cover;
-    }
-    .land-survey .eyebrow { color: #8ee69b; }
-    .land-survey h2 { color: #fff; }
-    .land-survey-copy {
-      display: grid;
-      grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
-      gap: clamp(2rem, 6vw, 5rem);
-      align-items: center;
-    }
-    .land-survey-intro p {
-      max-width: 560px;
-      color: rgba(255, 255, 255, .8);
-      margin-bottom: 1.5rem;
-    }
-    .land-survey .btn-light { margin-left: .65rem; }
-    .deliverables {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: .8rem;
-    }
-    .deliverable {
-      min-height: 132px;
-      padding: 1.1rem;
-      border: 1px solid rgba(255, 255, 255, .18);
-      border-radius: 8px;
-      background: rgba(255, 255, 255, .1);
-      backdrop-filter: blur(8px);
-    }
-    .deliverable strong {
-      display: block;
-      color: #8ee69b;
-      font-size: 1rem;
-      margin-bottom: .35rem;
-    }
-    .deliverable span {
-      display: block;
-      color: rgba(255, 255, 255, .76);
-      font-size: .84rem;
-      line-height: 1.5;
-    }
-    .survey-example {
-      display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(260px, .6fr);
-      margin-top: 2rem;
-      overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, .18);
-      border-radius: 8px;
-      background: rgba(255, 255, 255, .1);
-      backdrop-filter: blur(8px);
-    }
-    .survey-example img {
-      width: 100%;
-      height: 360px;
-      object-fit: contain;
-      background: #fff;
-    }
-    .survey-example figcaption {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: clamp(1.4rem, 4vw, 2.4rem);
-    }
-    .survey-example small {
-      color: #8ee69b;
-      font-size: .7rem;
-      font-weight: 950;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      margin-bottom: .55rem;
-    }
-    .survey-example strong {
-      font-size: 1.3rem;
-      line-height: 1.2;
-      margin-bottom: .65rem;
-    }
-    .survey-example span {
-      color: rgba(255, 255, 255, .76);
-      font-size: .9rem;
-    }
-    .survey-analysis-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-    .survey-analysis-card {
-      overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, .18);
-      border-radius: 8px;
-      background: rgba(255, 255, 255, .1);
-      backdrop-filter: blur(8px);
-    }
-    .survey-analysis-card img {
-      width: 100%;
-      aspect-ratio: 1.12 / 1;
-      object-fit: contain;
-      background: #fff;
-    }
-    .survey-analysis-card figcaption { padding: 1.2rem; }
-    .survey-analysis-card strong {
-      display: block;
-      color: #8ee69b;
-      margin-bottom: .3rem;
-    }
-    .survey-analysis-card span {
-      color: rgba(255, 255, 255, .76);
-      font-size: .86rem;
-    }
-
-    .gallery { background: var(--soft); }
-    .gallery-top {
-      display: flex;
-      justify-content: space-between;
-      gap: 1rem;
-      align-items: end;
-      margin-bottom: 1.4rem;
-    }
-    .mosaic {
-      display: grid;
-      grid-template-columns: 1.4fr 1fr 1fr;
-      grid-auto-rows: 240px;
-      gap: 12px;
-    }
-    .shot {
-      position: relative;
-      overflow: hidden;
-      border-radius: 8px;
-      cursor: pointer;
-      background: #cbd6cb;
-    }
-    .shot:first-child { grid-row: span 2; }
-    .shot img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform .5s ease, filter .25s ease;
-    }
-    .shot:hover img { transform: scale(1.055); filter: brightness(1.04); }
-    .shot span {
-      position: absolute;
-      inset: auto 12px 12px;
-      color: #fff;
-      font-weight: 850;
-      font-size: .88rem;
-      text-shadow: 0 2px 12px rgba(0, 0, 0, .55);
-    }
-
-    .tech { background: var(--paper); }
-    .split {
-      display: grid;
-      grid-template-columns: .95fr 1.05fr;
-      gap: clamp(2rem, 6vw, 4.5rem);
-      align-items: center;
-    }
-    .feature-list { display: grid; gap: .9rem; }
-    .feature {
-      display: grid;
-      grid-template-columns: 44px 1fr;
-      gap: .95rem;
-      background: var(--bg);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 1rem;
-    }
-    .feature b {
-      width: 44px;
-      height: 44px;
-      display: grid;
-      place-items: center;
-      border-radius: 8px;
-      color: var(--blue);
-      background: #e4f0f8;
-      font-weight: 950;
-    }
-    .feature h3 { font-size: 1rem; margin-bottom: .2rem; }
-    .feature p { color: var(--muted); font-size: .88rem; }
-    .visual {
-      position: relative;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 25px 60px rgba(20, 31, 25, .16);
-    }
-    .visual img { width: 100%; height: 500px; object-fit: cover; }
-    .visual-label {
-      position: absolute;
-      left: 16px;
-      right: 16px;
-      bottom: 16px;
-      color: #fff;
-      background: rgba(7, 17, 12, .68);
-      border: 1px solid rgba(255, 255, 255, .16);
-      backdrop-filter: blur(12px);
-      border-radius: 8px;
-      padding: .85rem 1rem;
-      font-weight: 800;
-    }
-
-    .process { background: var(--soft); }
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 1rem;
-    }
-    .step {
-      background: rgba(255, 255, 255, .58);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 1.1rem;
-    }
-    .num {
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      background: var(--green);
-      color: #fff;
-      display: grid;
-      place-items: center;
-      font-weight: 950;
-      margin-bottom: .9rem;
-    }
-    .step h3 { font-size: .98rem; }
-    .step p { color: var(--muted); font-size: .86rem; }
-
-    .coverage { background: var(--paper); }
-    .coverage-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 1rem;
-    }
-    .place {
-      background: var(--bg);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 1.2rem;
-    }
-    .place strong { color: var(--blue); display: block; margin-bottom: .3rem; }
-    .place p { color: var(--muted); font-size: .88rem; }
-
-    .contact { background: var(--soft); }
-    .contact-layout {
-      display: grid;
-      grid-template-columns: .9fr 1.1fr;
-      gap: clamp(2rem, 6vw, 4.5rem);
-      align-items: start;
-    }
-    .contact-boxes { display: grid; gap: .85rem; margin-top: 1.6rem; }
-    .contact-box {
-      background: var(--paper);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 1rem;
-    }
-    .contact-box small {
-      display: block;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: .07em;
-      font-weight: 900;
-      font-size: .68rem;
-      margin-bottom: .2rem;
-    }
-    .contact-box a { text-decoration: none; font-weight: 850; }
-    form {
-      background: var(--paper);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: clamp(1.2rem, 3vw, 2rem);
-      box-shadow: 0 18px 48px rgba(20, 31, 25, .09);
-    }
-    .fields {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-    }
-    label { display: grid; gap: .35rem; color: var(--muted); font-size: .82rem; font-weight: 850; }
-    input, select, textarea {
-      width: 100%;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: .8rem .9rem;
-      background: var(--bg);
-      color: var(--ink);
-      font: inherit;
-      outline: none;
-    }
-    input:focus, select:focus, textarea:focus {
-      border-color: var(--green);
-      box-shadow: 0 0 0 4px rgba(47, 125, 58, .1);
-    }
-    .full { grid-column: 1 / -1; }
-    textarea { resize: vertical; min-height: 120px; }
-    button.submit {
-      width: 100%;
-      border: 0;
-      border-radius: 8px;
-      min-height: 52px;
-      background: var(--green);
-      color: #fff;
-      font-weight: 950;
-      font-size: 1rem;
-      margin-top: 1rem;
-      cursor: pointer;
-      box-shadow: 0 12px 28px rgba(47, 125, 58, .22);
-    }
-    button.submit:hover { background: #266c31; }
-    .note { color: var(--muted); font-size: .78rem; text-align: center; margin-top: .75rem; }
-
-    footer {
-      background: #111712;
-      color: rgba(255, 255, 255, .66);
-      padding: 2rem clamp(18px, 5vw, 72px);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1.2rem;
-      flex-wrap: wrap;
-    }
-    footer img { height: 50px; width: auto; }
-    footer strong { color: #fff; display: block; }
-    footer a { color: #9fe0a7; text-decoration: none; }
-
-    #lightbox {
-      display: none;
-      position: fixed;
-      inset: 0;
-      z-index: 80;
-      background: rgba(0, 0, 0, .92);
-      align-items: center;
-      justify-content: center;
-      padding: 5vw;
-      cursor: zoom-out;
-    }
-    #lightbox.open { display: flex; }
-    #lightbox img {
-      max-width: 92vw;
-      max-height: 84vh;
-      border-radius: 8px;
-      box-shadow: 0 30px 80px rgba(0, 0, 0, .55);
-    }
-    #lightbox p {
-      position: absolute;
-      bottom: 22px;
-      color: rgba(255, 255, 255, .78);
-      font-weight: 750;
-      text-align: center;
-      padding: 0 1rem;
-    }
-    #lightbox button {
-      position: absolute;
-      top: 18px;
-      right: 20px;
-      width: 44px;
-      height: 44px;
-      border: 1px solid rgba(255, 255, 255, .26);
-      border-radius: 50%;
-      color: #fff;
-      background: rgba(255, 255, 255, .08);
-      font-size: 1.4rem;
-      cursor: pointer;
-    }
-
-    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .55s ease, transform .55s ease; }
-    .reveal.visible { opacity: 1; transform: none; }
-
-    @media (max-width: 980px) {
-      nav ul { display: none; }
-      .hamburger { display: flex; }
-      .hero-inner, .split, .contact-layout, .land-survey-copy, .survey-example { grid-template-columns: 1fr; }
-      .hero-card { display: none; }
-      .grid-3, .steps, .coverage-grid { grid-template-columns: 1fr 1fr; }
-      .mosaic { grid-template-columns: 1fr 1fr; grid-auto-rows: 210px; }
-      .shot:first-child { grid-column: 1 / -1; grid-row: span 1; }
-      .visual img { height: 380px; }
-    }
-
-    @media (max-width: 620px) {
-      .hero { min-height: 92vh; }
-      .hero-inner { width: min(90vw, 520px); padding-top: 7.5rem; }
-      .grid-3, .steps, .coverage-grid, .fields, .mosaic, .deliverables, .survey-analysis-grid { grid-template-columns: 1fr; }
-      .land-survey .btn { width: 100%; }
-      .land-survey .btn-light { margin: .7rem 0 0; }
-      .survey-example img { height: 270px; }
-      .mosaic { grid-auto-rows: 230px; }
-      footer { align-items: flex-start; flex-direction: column; }
-    }
-  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "InspectDron S.A.S.",
+    "url": "https://pevisero.github.io/InspectDron/",
+    "image": "https://pevisero.github.io/InspectDron/assets/img/opengraph.jpg",
+    "description": "Inspección técnica de cubiertas y levantamiento fotogramétrico para proyectos fotovoltaicos.",
+    "areaServed": ["Bogotá", "Cundinamarca", "Colombia"],
+    "sameAs": [
+      "https://linkedin.com/company/inspectdron-s-a-s",
+      "https://facebook.com/profile.php?id=61589351548795"
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+57-313-381-5282",
+      "contactType": "customer service",
+      "areaServed": "CO",
+      "availableLanguage": "Spanish"
+    }
+  }
+  </script>
 </head>
 <body>
-  <nav>
-    <a class="brand" href="#inicio" aria-label="InspectDron S.A.S.">
-      <img src="logo-inspectdron-final.jpeg" alt="InspectDron S.A.S." />
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <header class="site-header" data-header>
+    <a class="brand" href="#inicio" aria-label="Inicio InspectDron">
+      <img src="assets/img/logo-inspectdron.webp" alt="InspectDron S.A.S." width="180" height="120">
     </a>
-    <ul>
-      <li><a href="#servicios">Servicios</a></li>
-      <li><a href="#levantamiento-terrenos">Terrenos</a></li>
-      <li><a href="#proyectos">Proyectos</a></li>
-      <li><a href="#tecnologia">Tecnologia</a></li>
-      <li><a href="#proceso">Proceso</a></li>
-      <li><a class="nav-cta" href="#contacto">Cotizar estudio</a></li>
-    </ul>
-    <button class="hamburger" type="button" aria-label="Abrir menu" onclick="toggleMenu()">
-      <span></span><span></span><span></span>
+
+    <nav class="desktop-nav" aria-label="Navegación principal">
+      <a href="#problema">Problema</a>
+      <a href="#entregables">Entregables</a>
+      <a href="#metodo">Método</a>
+      <a href="#casos">Casos reales</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+
+    <a class="header-cta" href="#contacto">Solicitar Inspección</a>
+    <button class="menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-menu">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span class="sr-only">Abrir menú</span>
     </button>
+  </header>
+
+  <nav class="mobile-nav" id="mobile-menu" data-mobile-menu aria-label="Navegación móvil">
+    <a href="#problema">Problema</a>
+    <a href="#entregables">Entregables</a>
+    <a href="#metodo">Método</a>
+    <a href="#casos">Casos reales</a>
+    <a href="#ventajas">Ventajas</a>
+    <a href="#faq">Preguntas frecuentes</a>
+    <a href="#contacto">Contacto</a>
   </nav>
 
-  <div id="mobile-menu">
-    <a href="#servicios" onclick="toggleMenu()">Servicios</a>
-    <a href="#levantamiento-terrenos" onclick="toggleMenu()">Terrenos</a>
-    <a href="#proyectos" onclick="toggleMenu()">Proyectos</a>
-    <a href="#tecnologia" onclick="toggleMenu()">Tecnologia</a>
-    <a href="#proceso" onclick="toggleMenu()">Proceso</a>
-    <a href="#contacto" onclick="toggleMenu()">Cotizar estudio</a>
-  </div>
-
-  <main id="inicio">
-    <section class="hero">
-      <div class="hero-inner">
-        <div>
-          <div class="badge"><i></i>Cundinamarca · Boyaca · Tolima · Meta</div>
-          <h1>Fotogrametria y analisis <span>para conocer tu terreno</span></h1>
-          <p>Levantamos informacion aerea precisa para analizar areas, linderos, pendientes, escorrentias y curvas de nivel, y para evaluar terrenos y cubiertas antes de instalar paneles solares.</p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#contacto">Solicitar diagnostico</a>
-            <a class="btn btn-light" href="#proyectos">Ver trabajos de campo</a>
-          </div>
-          <div class="hero-pills">
-            <span class="pill">Ortomosaicos</span>
-            <span class="pill">Modelos 3D</span>
-            <span class="pill">Curvas de nivel</span>
-            <span class="pill">Analisis de cubiertas</span>
-            <span class="pill">Analisis de terrenos</span>
-          </div>
+  <main id="contenido">
+    <section class="hero" id="inicio" aria-labelledby="hero-title">
+      <picture>
+        <source srcset="assets/img/fiandina-chia-paneles.webp" type="image/webp">
+        <img class="hero-media" src="assets/img/fiandina-chia-paneles.jpg" alt="Cubierta industrial inspeccionada para proyecto fotovoltaico" width="1400" height="787">
+      </picture>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <p class="eyebrow eyebrow-light">Bogotá y Cundinamarca · Cubiertas industriales · Energía solar</p>
+        <h1 id="hero-title">Inspección Técnica de Cubiertas para Proyectos Fotovoltaicos</h1>
+        <p class="hero-copy">Obtenga información técnica precisa antes de diseñar un sistema fotovoltaico.</p>
+        <div class="hero-actions" aria-label="Acciones principales">
+          <a class="btn btn-primary" href="#contacto">Solicitar Inspección</a>
+          <a class="btn btn-secondary" href="#casos">Ver un Proyecto Real</a>
         </div>
-        <aside class="hero-card" aria-label="Resumen tecnico">
-          <img src="logo-inspectdron-final.jpeg" alt="InspectDron S.A.S." />
-          <div class="metric"><strong>2D</strong><span>Ortomosaico georreferenciado para medicion de areas</span></div>
-          <div class="metric"><strong>3D</strong><span>Modelo de elevacion, terreno o cubierta para analisis tecnico</span></div>
-          <div class="metric"><strong>72h</strong><span>Entrega digital estimada segun alcance del proyecto</span></div>
-        </aside>
+        <dl class="hero-proof">
+          <div>
+            <dt>Dossier técnico</dt>
+            <dd>Hallazgos, áreas, obstáculos y evidencia organizada.</dd>
+          </div>
+          <div>
+            <dt>Ortofoto</dt>
+            <dd>Base visual georreferenciada para medición y diseño.</dd>
+          </div>
+          <div>
+            <dt>Entrega digital</dt>
+            <dd>Archivos clasificados para equipos de ingeniería.</dd>
+          </div>
+        </dl>
       </div>
     </section>
 
-    <section class="services" id="servicios">
-      <div class="inner">
+    <section class="section problem" id="problema" aria-labelledby="problema-title">
+      <div class="container split-grid">
+        <div class="section-copy reveal">
+          <p class="eyebrow">Problema que resolvemos</p>
+          <h2 id="problema-title">Diseñar sobre información incompleta aumenta el riesgo técnico y comercial.</h2>
+        </div>
+        <div class="problem-list reveal">
+          <article>
+            <h3>Visitas lentas o incompletas</h3>
+            <p>El equipo técnico pierde tiempo levantando datos básicos de cubierta, accesos, equipos, sombras y restricciones visibles.</p>
+          </article>
+          <article>
+            <h3>Exposición innecesaria del personal</h3>
+            <p>Subir a cubiertas industriales sin una lectura previa incrementa riesgos operativos y obliga a repetir inspecciones.</p>
+          </article>
+          <article>
+            <h3>Diseños con supuestos</h3>
+            <p>Sin registro fotográfico ordenado ni mediciones confiables, el diseño fotovoltaico avanza con incertidumbre.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section deliverables" id="entregables" aria-labelledby="entregables-title">
+      <div class="container">
         <div class="section-head reveal">
-          <div class="eyebrow">Portafolio de servicios</div>
-          <h2>Datos confiables antes de instalar paneles solares</h2>
-          <p>Convertimos imagenes capturadas con dron en informacion util para decidir, disenar y cotizar proyectos solares con menos incertidumbre.</p>
+          <p class="eyebrow">Entregables principales</p>
+          <h2 id="entregables-title">El producto es información técnica, no un vuelo.</h2>
+          <p>InspectDron estructura la captura aérea como insumo para instaladores, ingenieros y propietarios que necesitan decidir con evidencia.</p>
         </div>
-        <div class="grid-3">
-          <article class="card reveal">
-            <img src="fotos/acueducto_cota_aereo.jpg" alt="Fotogrametria con dron para analisis de terreno" />
-            <div class="card-body">
-              <span class="tag">Fotogrametria</span>
-              <h3>Ortomosaicos y levantamientos aereos</h3>
-              <p>Captura planificada con dron para generar mapas de alta resolucion y mediciones claras del area disponible.</p>
-              <ul>
-                <li>Ortomosaico georreferenciado</li>
-                <li>Medicion de areas y distancias</li>
-                <li>Registro visual del estado actual</li>
-                <li>Archivos listos para revision tecnica</li>
-              </ul>
-            </div>
+        <div class="deliverable-grid">
+          <article class="deliverable-card reveal">
+            <span>01</span>
+            <h3>Dossier Técnico InspectDron</h3>
+            <p>Documento ejecutivo-técnico con objetivo, alcance, evidencia, hallazgos visuales y recomendaciones para avanzar al diseño.</p>
           </article>
-
-          <article class="card reveal">
-            <img src="fotos/semex_zipaquira_paneles.jpg" alt="Analisis de cubiertas para paneles solares" />
-            <div class="card-body">
-              <span class="tag">Cubiertas</span>
-              <h3>Analisis de techos para proyectos solares</h3>
-              <p>Evaluamos cubiertas existentes para identificar areas utiles, obstaculos, inclinaciones y zonas que requieren visita tecnica detallada.</p>
-              <ul>
-                <li>Area aprovechable para modulos</li>
-                <li>Identificacion de obstaculos</li>
-                <li>Pendientes y orientacion general</li>
-                <li>Insumos para propuesta fotovoltaica</li>
-              </ul>
-            </div>
+          <article class="deliverable-card reveal">
+            <span>02</span>
+            <h3>Registro Fotográfico Técnico</h3>
+            <p>Fotografías clasificadas por zona, obstáculo, acceso, equipo existente y condición relevante de la cubierta.</p>
           </article>
-
-          <article class="card reveal">
-            <img src="fotos/catedral_sal_zipaquira_paneles.jpg" alt="Analisis de terreno para parques solares" />
-            <div class="card-body">
-              <span class="tag">Terrenos</span>
-              <h3>Prefactibilidad de terrenos solares</h3>
-              <p>Documentamos predios y lotes para entender topografia, accesos, sombras cercanas y condiciones que afectan la instalacion.</p>
-              <ul>
-                <li>Modelo digital de superficie</li>
-                <li>Analisis de pendientes del terreno</li>
-                <li>Revision visual de accesos</li>
-                <li>Soporte para diseno preliminar</li>
-              </ul>
-            </div>
+          <article class="deliverable-card reveal">
+            <span>03</span>
+            <h3>Ortofoto Georreferenciada</h3>
+            <p>Imagen aérea procesada para lectura de cubierta, medición de áreas y revisión del contexto inmediato del proyecto.</p>
+          </article>
+          <article class="deliverable-card reveal">
+            <span>04</span>
+            <h3>Medición de Áreas</h3>
+            <p>Estimación visual y métrica de superficies útiles, zonas restringidas y espacios que requieren validación estructural.</p>
+          </article>
+          <article class="deliverable-card reveal">
+            <span>05</span>
+            <h3>Identificación de Obstáculos</h3>
+            <p>Localización de claraboyas, equipos HVAC, ductos, antenas, bordes, accesos y elementos que afectan el layout solar.</p>
+          </article>
+          <article class="deliverable-card reveal">
+            <span>06</span>
+            <h3>Evaluación Visual de Sombras</h3>
+            <p>Lectura preliminar de sombras generadas por parapetos, equipos, árboles, edificaciones cercanas y cambios de nivel.</p>
+          </article>
+          <article class="deliverable-card deliverable-wide reveal">
+            <span>07</span>
+            <h3>Archivos digitales organizados</h3>
+            <p>Carpetas listas para el equipo de ingeniería: fotografías, ortofoto, insumos de medición y resumen de hallazgos.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="land-survey" id="levantamiento-terrenos">
-      <div class="inner land-survey-copy">
-        <div class="land-survey-intro reveal">
-          <div class="eyebrow">Nuevo servicio especializado</div>
-          <h2>Levantamiento y analisis de terrenos con dron</h2>
-          <p>Transformamos un vuelo sobre tu predio en informacion visual y medible para planear obras, administrar fincas, revisar drenajes y comprender mejor las condiciones del terreno.</p>
-          <a class="btn btn-primary" href="#contacto">Cotizar levantamiento</a>
-          <a class="btn btn-light" href="#proceso">Como trabajamos</a>
-        </div>
-        <div class="deliverables reveal" aria-label="Entregables para levantamientos de terrenos">
-          <article class="deliverable">
-            <strong>Areas y linderos</strong>
-            <span>Medicion de superficies, perimetros, distancias y delimitaciones visibles del predio.</span>
-          </article>
-          <article class="deliverable">
-            <strong>Curvas de nivel</strong>
-            <span>Representacion del relieve para apoyar planeacion, diseno y evaluacion preliminar.</span>
-          </article>
-          <article class="deliverable">
-            <strong>Pendientes y escorrentias</strong>
-            <span>Lectura de inclinaciones y posibles recorridos superficiales del agua.</span>
-          </article>
-          <article class="deliverable">
-            <strong>Ortomosaico y modelo 3D</strong>
-            <span>Mapa aereo georreferenciado y modelo digital para consulta y documentacion tecnica.</span>
-          </article>
-        </div>
-      </div>
-      <figure class="inner survey-example reveal">
-        <img src="fotos/levantamiento-pradera-ortomosaico.png" alt="Ortomosaico de un levantamiento de terreno realizado por InspectDron" loading="lazy" />
-        <figcaption>
-          <small>Muestra de trabajo real</small>
-          <strong>Ortomosaico de terreno levantado con dron</strong>
-          <span>Una vista continua y detallada del predio permite medir areas, reconocer caminos, cuerpos de agua, coberturas y otros elementos visibles antes de realizar analisis especializados.</span>
-        </figcaption>
-      </figure>
-      <div class="inner survey-analysis-grid">
-        <figure class="survey-analysis-card reveal">
-          <img src="fotos/analisis-malla-drenaje-pradera.webp" alt="Malla de drenaje y rutas estimadas de escorrentia sobre un terreno" loading="lazy" />
-          <figcaption>
-            <strong>Malla de drenaje y escorrentias</strong>
-            <span>Identificacion visual de posibles rutas de flujo superficial y zonas de concentracion del agua.</span>
-          </figcaption>
-        </figure>
-        <figure class="survey-analysis-card reveal">
-          <img src="fotos/analisis-curvas-nivel-pradera.webp" alt="Curvas de nivel generadas sobre un levantamiento de terreno" loading="lazy" />
-          <figcaption>
-            <strong>Curvas de nivel</strong>
-            <span>Representacion del relieve y sus variaciones para apoyar la lectura y planeacion del terreno.</span>
-          </figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <section class="gallery" id="proyectos">
-      <div class="inner">
-        <div class="gallery-top">
-          <div class="section-head reveal" style="margin-bottom:0">
-            <div class="eyebrow">Proyectos reales</div>
-            <h2>Trabajo en campo con enfoque solar</h2>
-            <p>Imagenes de referencia usadas para documentar cubiertas, predios e instalaciones solares existentes.</p>
-          </div>
-          <a class="btn" style="border:1px solid var(--line); background:var(--paper); color:var(--blue)" href="#contacto">Agendar vuelo</a>
-        </div>
-        <div class="mosaic">
-          <div class="shot reveal" onclick="openLightbox(this)" data-caption="Vista aerea para lectura general del predio">
-            <img src="fotos/acueducto_cota_aereo.jpg" alt="Vista aerea para analisis de terreno" loading="lazy" />
-            <span>Lectura general del predio</span>
-          </div>
-          <div class="shot reveal" onclick="openLightbox(this)" data-caption="Cubierta industrial con potencial solar">
-            <img src="fotos/fiandina_chia_paneles.jpg" alt="Cubierta industrial con paneles solares" loading="lazy" />
-            <span>Cubiertas industriales</span>
-          </div>
-          <div class="shot reveal" onclick="openLightbox(this)" data-caption="Instalacion solar existente en cubierta">
-            <img src="fotos/semex_zipaquira_paneles.jpg" alt="Paneles solares en cubierta" loading="lazy" />
-            <span>Areas utiles en techo</span>
-          </div>
-          <div class="shot reveal" onclick="openLightbox(this)" data-caption="Cubierta para revision de obstaculos y zonas aprovechables">
-            <img src="fotos/lacteos_san_jeronimo_paneles.jpg" alt="Paneles solares en cubierta agroindustrial" loading="lazy" />
-            <span>Revision de obstaculos</span>
-          </div>
-          <div class="shot reveal" onclick="openLightbox(this)" data-caption="Documentacion de infraestructura asociada al proyecto">
-            <img src="fotos/motomart_chia_electrico.jpg" alt="Infraestructura asociada al proyecto solar" loading="lazy" />
-            <span>Contexto tecnico</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="tech" id="tecnologia">
-      <div class="inner split">
-        <div class="reveal">
-          <div class="eyebrow">Tecnologia y entregables</div>
-          <h2>Informacion visual convertida en decisiones</h2>
-          <p class="muted" style="margin-bottom:1.4rem">Cada vuelo se planifica segun el objetivo del proyecto: cubierta, lote, finca, industria o parque solar en etapa de diseno.</p>
-          <div class="feature-list">
-            <div class="feature">
-              <b>01</b>
-              <div><h3>Captura RGB de alta resolucion</h3><p>Imagenes nitidas para inspeccion visual, medicion y documentacion del sitio.</p></div>
-            </div>
-            <div class="feature">
-              <b>02</b>
-              <div><h3>Procesamiento fotogrametrico</h3><p>Generacion de ortomosaicos, modelos digitales y nubes de puntos segun alcance.</p></div>
-            </div>
-            <div class="feature">
-              <b>03</b>
-              <div><h3>Analisis para diseno solar</h3><p>Revision de areas disponibles, sombras, pendientes, orientacion y restricciones visibles.</p></div>
-            </div>
-            <div class="feature">
-              <b>04</b>
-              <div><h3>Entrega digital organizada</h3><p>Reporte con imagenes, hallazgos, recomendaciones e insumos para el equipo instalador.</p></div>
-            </div>
-          </div>
-        </div>
-        <div class="visual reveal">
-          <img src="fotos/lacteos_san_jeronimo_paneles.jpg" alt="Cubierta documentada con dron para proyecto solar" />
-          <div class="visual-label">Documentacion aerea para diseno y prefactibilidad solar</div>
-        </div>
-      </div>
-    </section>
-
-    <section class="process" id="proceso">
-      <div class="inner">
-        <div class="section-head center reveal">
-          <div class="eyebrow">Como trabajamos</div>
-          <h2>Del sitio al informe tecnico</h2>
-          <p>Un flujo simple para obtener informacion clara antes de invertir en una instalacion fotovoltaica.</p>
-        </div>
-        <div class="steps">
-          <div class="step reveal"><div class="num">1</div><h3>Solicitud</h3><p>Nos cuentas ubicacion, tipo de inmueble y objetivo del estudio.</p></div>
-          <div class="step reveal"><div class="num">2</div><h3>Plan de vuelo</h3><p>Definimos area, permisos operativos, clima y ventanas de captura.</p></div>
-          <div class="step reveal"><div class="num">3</div><h3>Captura</h3><p>Ejecutamos el vuelo con rutas ordenadas y registro fotografico completo.</p></div>
-          <div class="step reveal"><div class="num">4</div><h3>Procesamiento</h3><p>Generamos mapas, modelos y mediciones segun el alcance acordado.</p></div>
-          <div class="step reveal"><div class="num">5</div><h3>Entrega</h3><p>Recibes reporte digital e insumos para avanzar con tu instalador solar.</p></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="coverage" id="cobertura">
-      <div class="inner">
+    <section class="section method" id="metodo" aria-labelledby="metodo-title">
+      <div class="container">
         <div class="section-head reveal">
-          <div class="eyebrow">Zona de operacion</div>
-          <h2>Cobertura regional desde Chia</h2>
-          <p>Atendemos proyectos residenciales, comerciales, agroindustriales e industriales en la region central de Colombia.</p>
+          <p class="eyebrow">Método InspectDron</p>
+          <h2 id="metodo-title">Un flujo de inspección pensado para proyectos fotovoltaicos.</h2>
         </div>
-        <div class="coverage-grid">
-          <div class="place reveal"><strong>Cundinamarca</strong><p>Sabana de Bogota, Chia, Cajica, Zipaquira, Cota y municipios cercanos.</p></div>
-          <div class="place reveal"><strong>Boyaca</strong><p>Predios rurales, cubiertas comerciales y proyectos solares en planeacion.</p></div>
-          <div class="place reveal"><strong>Tolima</strong><p>Terrenos agroindustriales y espacios amplios para energia solar.</p></div>
-          <div class="place reveal"><strong>Meta</strong><p>Fincas, industrias y cubiertas productivas con potencial fotovoltaico.</p></div>
+        <ol class="method-steps">
+          <li class="reveal">
+            <strong>01</strong>
+            <h3>Objetivo técnico</h3>
+            <p>Se define si la inspección apoyará prefactibilidad, diseño preliminar, cotización, mantenimiento o validación de cubierta.</p>
+          </li>
+          <li class="reveal">
+            <strong>02</strong>
+            <h3>Plan de captura</h3>
+            <p>Se delimita el área, puntos críticos, seguridad operativa, condiciones de luz y rutas de inspección.</p>
+          </li>
+          <li class="reveal">
+            <strong>03</strong>
+            <h3>Registro en sitio</h3>
+            <p>Se capturan fotografías técnicas y secuencias aéreas para lectura de área, obstáculos, accesos y contexto.</p>
+          </li>
+          <li class="reveal">
+            <strong>04</strong>
+            <h3>Procesamiento</h3>
+            <p>Se organizan imágenes, se genera la ortofoto y se consolidan mediciones y hallazgos visuales.</p>
+          </li>
+          <li class="reveal">
+            <strong>05</strong>
+            <h3>Entrega técnica</h3>
+            <p>El cliente recibe el Dossier Técnico InspectDron y archivos digitales para su equipo de ingeniería.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section cases" id="casos" aria-labelledby="casos-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Casos reales</p>
+          <h2 id="casos-title">Proyectos listos para documentar con criterio técnico.</h2>
+          <p>La sección queda preparada para crecer con más proyectos, manteniendo una estructura útil para clientes corporativos.</p>
+        </div>
+        <div class="case-grid">
+          <article class="case-card reveal">
+            <img src="assets/img/semex-zipaquira-paneles.webp" alt="Cubierta con sistema fotovoltaico en Zipaquirá" width="700" height="394" loading="lazy">
+            <div>
+              <p class="case-location">Zipaquirá · Cubierta industrial</p>
+              <h3>Validación visual para sistema fotovoltaico en operación</h3>
+              <dl>
+                <div><dt>Objetivo</dt><dd>Documentar cubierta y componentes visibles del sistema.</dd></div>
+                <div><dt>Desafío</dt><dd>Identificar áreas ocupadas, equipos e interferencias.</dd></div>
+                <div><dt>Entregables</dt><dd>Registro fotográfico, ortofoto y archivos clasificados.</dd></div>
+                <div><dt>Resultado</dt><dd>Base visual organizada para revisión técnica y mantenimiento.</dd></div>
+              </dl>
+            </div>
+          </article>
+          <article class="case-card reveal">
+            <img src="assets/img/acueducto-cota-aereo.webp" alt="Vista aérea de predio para levantamiento técnico en Cota" width="700" height="394" loading="lazy">
+            <div>
+              <p class="case-location">Cota · Predio operativo</p>
+              <h3>Levantamiento técnico del entorno y áreas disponibles</h3>
+              <dl>
+                <div><dt>Objetivo</dt><dd>Registrar el predio y su contexto para prefactibilidad.</dd></div>
+                <div><dt>Desafío</dt><dd>Ordenar accesos, sombras y zonas de intervención potencial.</dd></div>
+                <div><dt>Entregables</dt><dd>Ortofoto, medición de áreas y evidencia aérea.</dd></div>
+                <div><dt>Resultado</dt><dd>Lectura inicial clara para decisiones de ingeniería.</dd></div>
+              </dl>
+            </div>
+          </article>
+          <article class="case-card reveal">
+            <img src="assets/img/lacteos-san-jeronimo-paneles.webp" alt="Cubierta agroindustrial con paneles solares" width="700" height="394" loading="lazy">
+            <div>
+              <p class="case-location">San Jerónimo · Agroindustria</p>
+              <h3>Documentación de cubierta productiva con ocupación solar</h3>
+              <dl>
+                <div><dt>Objetivo</dt><dd>Capturar evidencia visual de módulos, bordes y zonas de servicio.</dd></div>
+                <div><dt>Desafío</dt><dd>Reconocer restricciones y pasos técnicos en cubierta.</dd></div>
+                <div><dt>Entregables</dt><dd>Registro fotográfico técnico y dossier de hallazgos.</dd></div>
+                <div><dt>Resultado</dt><dd>Información ordenada para inspección y seguimiento.</dd></div>
+              </dl>
+            </div>
+          </article>
         </div>
       </div>
     </section>
 
-    <section class="contact" id="contacto">
-      <div class="inner contact-layout">
-        <div class="reveal">
-          <div class="eyebrow">Contacto</div>
-          <h2>Hablemos de tu terreno o cubierta</h2>
-          <p class="muted">Envia los datos basicos del sitio y te respondemos con una propuesta de vuelo y los entregables recomendados para tu necesidad.</p>
-          <div class="contact-boxes">
-            <div class="contact-box"><small>WhatsApp</small><a href="https://wa.me/573172791305" target="_blank" rel="noopener">+57 3172791305</a></div>
-            <div class="contact-box"><small>Correo</small><a href="mailto:p_segurar@outlook.com">p_segurar@outlook.com</a></div>
-            <div class="contact-box"><small>Sede</small><strong>Chia, Cundinamarca · Colombia</strong></div>
+    <section class="section advantages" id="ventajas" aria-labelledby="ventajas-title">
+      <div class="container split-grid">
+        <div class="section-copy reveal">
+          <p class="eyebrow">Ventajas</p>
+          <h2 id="ventajas-title">Menos incertidumbre antes de invertir horas de ingeniería.</h2>
+        </div>
+        <div class="advantage-grid">
+          <article class="reveal"><h3>Reducción del tiempo de inspección</h3><p>El equipo recibe una lectura previa para enfocar la visita presencial donde sí agrega valor.</p></article>
+          <article class="reveal"><h3>Menor exposición en cubiertas</h3><p>La inspección aérea reduce recorridos innecesarios y ayuda a planear accesos más seguros.</p></article>
+          <article class="reveal"><h3>Documentación organizada</h3><p>La información queda clasificada para ingeniería, ventas técnicas, mantenimiento y cliente final.</p></article>
+          <article class="reveal"><h3>Apoyo al diseño del sistema</h3><p>Áreas, obstáculos y sombras visibles se convierten en insumos para dimensionamiento preliminar.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section faq" id="faq" aria-labelledby="faq-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Preguntas frecuentes</p>
+          <h2 id="faq-title">Respuestas para equipos técnicos y comerciales.</h2>
+        </div>
+        <div class="faq-list">
+          <details class="reveal">
+            <summary>¿InspectDron diseña sistemas fotovoltaicos?</summary>
+            <p>No. InspectDron entrega información técnica de campo para apoyar a empresas instaladoras, ingenieros y propietarios antes del diseño o la visita especializada.</p>
+          </details>
+          <details class="reveal">
+            <summary>¿La ortofoto reemplaza una revisión estructural?</summary>
+            <p>No. La ortofoto y el registro visual ayudan a tomar decisiones preliminares, pero la capacidad estructural debe validarla un profesional competente.</p>
+          </details>
+          <details class="reveal">
+            <summary>¿Qué zonas cubren?</summary>
+            <p>Atendemos principalmente Bogotá, Sabana de Bogotá y Cundinamarca. También se evalúan proyectos en otras regiones según alcance y agenda operativa.</p>
+          </details>
+          <details class="reveal">
+            <summary>¿Qué recibe el cliente?</summary>
+            <p>Un Dossier Técnico InspectDron, registro fotográfico técnico, ortofoto georreferenciada cuando aplica, mediciones de áreas, identificación de obstáculos, evaluación visual de sombras y archivos digitales organizados.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact" id="contacto" aria-labelledby="contacto-title">
+      <div class="container contact-grid">
+        <div class="contact-copy reveal">
+          <p class="eyebrow">Contacto</p>
+          <h2 id="contacto-title">Solicite una inspección técnica de cubierta.</h2>
+          <p>Comparta ubicación, tipo de cubierta, objetivo del proyecto y etapa actual. Responderemos con el alcance recomendado para su inspección.</p>
+          <div class="contact-links">
+            <a href="https://wa.me/573133815282" target="_blank" rel="noopener">WhatsApp: +57 313 381 5282</a>
+            <a href="https://linkedin.com/company/inspectdron-s-a-s" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="https://facebook.com/profile.php?id=61589351548795" target="_blank" rel="noopener">Facebook</a>
+          </div>
+          <div class="map-panel" aria-label="Zona de servicio">
+            <strong>Zona de servicio</strong>
+            <p>Bogotá, Sabana de Bogotá y Cundinamarca. Proyectos fuera de la región sujetos a alcance operativo.</p>
+            <a href="https://www.google.com/maps/search/Bogot%C3%A1+Cundinamarca" target="_blank" rel="noopener">Ver zona en mapa</a>
           </div>
         </div>
-        <form class="reveal" onsubmit="sendWhatsApp(event)">
-          <div class="fields">
-            <label>Nombre completo
-              <input id="nombre" type="text" placeholder="Tu nombre" />
-            </label>
-            <label>WhatsApp / telefono
-              <input id="telefono" type="tel" placeholder="+57 300 000 0000" />
-            </label>
-            <label>Correo electronico
-              <input id="email" type="email" placeholder="tu@correo.com" />
-            </label>
-            <label>Tipo de sitio
-              <select id="sitio">
-                <option value="">Selecciona...</option>
-                <option>Cubierta residencial</option>
-                <option>Cubierta comercial o industrial</option>
-                <option>Terreno rural</option>
-                <option>Parque solar en planeacion</option>
-                <option>No estoy seguro</option>
-              </select>
-            </label>
-            <label>Municipio
-              <input id="municipio" type="text" placeholder="Ej. Chia, Cundinamarca" />
-            </label>
-            <label>Servicio requerido
-              <select id="servicio">
-                <option value="">Selecciona...</option>
-                <option>Fotogrametria y ortomosaico</option>
-                <option>Levantamiento y analisis de terreno</option>
-                <option>Areas, linderos y curvas de nivel</option>
-                <option>Analisis de pendientes y escorrentias</option>
-                <option>Analisis de cubierta para paneles solares</option>
-                <option>Analisis de terreno para proyecto solar</option>
-                <option>Estudio completo de prefactibilidad solar</option>
-              </select>
-            </label>
-            <label class="full">Describe brevemente el proyecto
-              <textarea id="mensaje" placeholder="Area aproximada, tipo de inmueble, etapa del proyecto o informacion que ya tengas..."></textarea>
-            </label>
-          </div>
-          <button class="submit" type="submit">Enviar solicitud por WhatsApp</button>
-          <p class="note">Se abrira WhatsApp con el mensaje listo para enviar.</p>
+
+        <form class="contact-form reveal" data-contact-form>
+          <label>
+            Nombre
+            <input type="text" name="nombre" autocomplete="name" required>
+          </label>
+          <label>
+            Empresa
+            <input type="text" name="empresa" autocomplete="organization">
+          </label>
+          <label>
+            WhatsApp
+            <input type="tel" name="telefono" autocomplete="tel" required>
+          </label>
+          <label>
+            Correo
+            <input type="email" name="email" autocomplete="email">
+          </label>
+          <label>
+            Tipo de proyecto
+            <select name="proyecto" required>
+              <option value="">Seleccione una opción</option>
+              <option>Cubierta industrial</option>
+              <option>Cubierta comercial</option>
+              <option>Bodega o centro logístico</option>
+              <option>Mantenimiento de sistema existente</option>
+              <option>Otro</option>
+            </select>
+          </label>
+          <label>
+            Ubicación
+            <input type="text" name="ubicacion" placeholder="Ej. Tocancipá, Cundinamarca" required>
+          </label>
+          <label class="full-field">
+            Mensaje
+            <textarea name="mensaje" rows="5" placeholder="Área aproximada, etapa del proyecto, fecha requerida o entregables esperados"></textarea>
+          </label>
+          <button class="btn btn-primary form-button" type="submit">Enviar solicitud por WhatsApp</button>
         </form>
       </div>
     </section>
   </main>
 
-  <footer>
-    <img src="logo-inspectdron-final.jpeg" alt="InspectDron S.A.S." />
-    <div>
-      <strong>InspectDron S.A.S.</strong>
-      <span>Levantamientos de terrenos · Fotogrametria · Cubiertas para energia solar</span>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <img src="assets/img/logo-inspectdron.webp" alt="InspectDron S.A.S." width="150" height="100" loading="lazy">
+        <p>Información técnica para proyectos fotovoltaicos.</p>
+      </div>
+      <div>
+        <strong>Entregables</strong>
+        <a href="#entregables">Dossier Técnico InspectDron</a>
+        <a href="#entregables">Registro Fotográfico Técnico</a>
+        <a href="#entregables">Ortofoto Georreferenciada</a>
+      </div>
+      <div>
+        <strong>Contacto</strong>
+        <a href="https://wa.me/573133815282" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="https://linkedin.com/company/inspectdron-s-a-s" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://facebook.com/profile.php?id=61589351548795" target="_blank" rel="noopener">Facebook</a>
+      </div>
     </div>
-    <div>
-      <a href="https://wa.me/573172791305" target="_blank" rel="noopener">+57 3172791305</a><br />
-      <a href="mailto:p_segurar@outlook.com">p_segurar@outlook.com</a>
-    </div>
+    <p class="copyright">© 2026 InspectDron S.A.S. Todos los derechos reservados.</p>
   </footer>
 
-  <div id="lightbox" onclick="closeLightbox()">
-    <button type="button" aria-label="Cerrar" onclick="closeLightbox()">×</button>
-    <img id="lightbox-img" src="" alt="" onclick="event.stopPropagation()" />
-    <p id="lightbox-caption"></p>
-  </div>
-
-  <script>
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) entry.target.classList.add("visible");
-      });
-    }, { threshold: 0.08 });
-    document.querySelectorAll(".reveal").forEach((item) => observer.observe(item));
-
-    function toggleMenu() {
-      document.getElementById("mobile-menu").classList.toggle("open");
-    }
-
-    function openLightbox(item) {
-      const img = item.querySelector("img");
-      document.getElementById("lightbox-img").src = img.src;
-      document.getElementById("lightbox-caption").textContent = item.dataset.caption || img.alt;
-      document.getElementById("lightbox").classList.add("open");
-      document.body.style.overflow = "hidden";
-    }
-
-    function closeLightbox() {
-      document.getElementById("lightbox").classList.remove("open");
-      document.body.style.overflow = "";
-    }
-
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape") closeLightbox();
-    });
-
-    function value(id) {
-      return document.getElementById(id).value.trim() || "-";
-    }
-
-    function sendWhatsApp(event) {
-      event.preventDefault();
-      const text = encodeURIComponent(
-        "*Solicitud de servicio - InspectDron S.A.S.*\n\n" +
-        "*Nombre:* " + value("nombre") + "\n" +
-        "*Telefono:* " + value("telefono") + "\n" +
-        "*Correo:* " + value("email") + "\n" +
-        "*Tipo de sitio:* " + value("sitio") + "\n" +
-        "*Municipio:* " + value("municipio") + "\n" +
-        "*Servicio:* " + value("servicio") + "\n" +
-        "*Detalle:* " + value("mensaje")
-      );
-      window.open("https://wa.me/573172791305?text=" + text, "_blank");
-    }
-  </script>
+  <script src="app.js" defer></script>
 </body>
 </html>
