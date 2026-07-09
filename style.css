@@ -440,7 +440,7 @@ h3 {
   align-items: start;
 }
 
-.method {
+.section.method {
   background: var(--color-blue);
   color: var(--color-white);
 }
