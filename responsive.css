@@ -87,7 +87,8 @@
   .method-steps,
   .case-card dl,
   .footer-inner,
-  .contact-form {
+  .contact-form,
+  .why-us-list {
     grid-template-columns: 1fr;
   }
 
