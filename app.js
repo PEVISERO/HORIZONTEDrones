@@ -49,7 +49,7 @@ contactForm?.addEventListener("submit", (event) => {
 
   const formData = new FormData(contactForm);
   const message = [
-    "*Solicitud de inspección técnica - InspectDron*",
+    "*Solicitud de inspección técnica - HORIZONTEDrones*",
     "",
     `*Nombre:* ${fieldValue(formData, "nombre")}`,
     `*Empresa:* ${fieldValue(formData, "empresa")}`,
@@ -60,5 +60,5 @@ contactForm?.addEventListener("submit", (event) => {
     `*Mensaje:* ${fieldValue(formData, "mensaje")}`
   ].join("\n");
 
-  window.open(`https://wa.me/573133815282?text=${encodeURIComponent(message)}`, "_blank", "noopener");
+  window.open(`https://wa.me/573172791305?text=${encodeURIComponent(message)}`, "_blank", "noopener");
 });
