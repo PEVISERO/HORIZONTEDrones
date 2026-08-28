@@ -109,44 +109,51 @@ textarea {
   object-fit: contain;
 }
 
+/* Hacemos la navegación más visible y equilibrada: todos los servicios tienen el mismo peso visual */
 .desktop-nav {
   display: flex;
   justify-content: center;
   gap: 24px;
 }
 
+/* Nav items más destacados: color más oscuro, mayor contraste y peso */
 .desktop-nav a,
 .mobile-nav a {
   text-decoration: none;
-  color: var(--color-muted);
-  font-size: 0.9rem;
-  font-weight: 700;
+  color: var(--color-blue-2);
+  font-size: 0.95rem;
+  font-weight: 800;
+  padding: 8px 10px;
+  border-radius: 6px;
 }
 
 .desktop-nav a:hover,
 .desktop-nav a:focus-visible,
 .mobile-nav a:hover,
 .mobile-nav a:focus-visible {
-  color: var(--color-blue);
+  color: var(--color-white);
+  background: linear-gradient(90deg, var(--color-blue-2), var(--color-blue));
+  box-shadow: 0 8px 18px rgba(11, 39, 66, 0.08);
 }
 
+/* CTA en header menos exclusiva: más neutral para abarcar todos los servicios */
 .header-cta {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 42px;
-  padding: 0 18px;
+  min-height: 40px;
+  padding: 0 14px;
   border-radius: var(--radius);
-  background: var(--color-green);
+  background: var(--color-blue-2);
   color: var(--color-white);
   text-decoration: none;
   font-weight: 800;
-  box-shadow: 0 12px 24px rgba(33, 138, 75, 0.2);
+  box-shadow: 0 8px 20px rgba(23, 65, 95, 0.12);
 }
 
 .header-cta:hover,
 .header-cta:focus-visible {
-  background: var(--color-green-dark);
+  background: var(--color-blue);
 }
 
 .menu-toggle {
@@ -744,6 +751,101 @@ h3 {
 .reveal.is-visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Estilos nuevos para la sección de servicios: darles presencia similar a la sección fotovoltaica
+   y hacer que los badges de cada servicio (los "nuevos servicios") destaquen ligeramente */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 18px;
+}
+
+.service-card {
+  padding: 20px;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+  background: linear-gradient(180deg, var(--color-white), #fbfcfd);
+  box-shadow: 0 14px 32px rgba(16, 32, 48, 0.06);
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.service-card:hover,
+.service-card:focus-within {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 48px rgba(16, 32, 48, 0.10);
+  border-color: rgba(23, 65, 95, 0.08);
+}
+
+.service-badge {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-weight: 900;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: var(--color-white);
+  background: linear-gradient(90deg, var(--color-green), var(--color-green-dark));
+  box-shadow: 0 8px 20px rgba(33, 138, 75, 0.16);
+  margin-bottom: 12px;
+}
+
+/* Hacemos que los badges de divisiones y ganadería/agrícola resalten con una ligera variación */
+.service-badge[data-type="primary"] {
+  background: linear-gradient(90deg, #2b6f4a, #1e5b39);
+}
+
+.service-badge[data-type="agro"] {
+  background: linear-gradient(90deg, #2f8a5a, #1d6b43);
+}
+
+.service-features {
+  margin-top: 12px;
+  padding-left: 18px;
+  color: var(--color-muted);
+}
+
+.service-features li {
+  margin-bottom: 8px;
+}
+
+/* Más equilibrio visual: títulos de secciones de servicios con peso similar */
+.services .section-head h2,
+.services .service-card h3 {
+  color: var(--color-blue-2);
+}
+
+/* Ajustes para móvil: navegación y layout */
+@media (max-width: 880px) {
+  .site-header {
+    grid-template-columns: auto 1fr auto;
+    padding: 0 16px;
+  }
+
+  .menu-toggle {
+    display: inline-flex;
+  }
+
+  .desktop-nav {
+    display: none;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .method-steps {
+    grid-template-columns: 1fr;
+  }
+
+  .case-card {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
