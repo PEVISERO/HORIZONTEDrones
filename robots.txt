@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://pevisero.github.io/InspectDron/sitemap.xml
+Sitemap: https://pevisero.github.io/HORIZONTEDrones/sitemap.xml
